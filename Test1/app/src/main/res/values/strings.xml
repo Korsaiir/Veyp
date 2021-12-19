@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Test1</string>
+    <string name="Enter">Войти</string>
+    <string name="Registration">Регистрация</string>
+    <string name="Google">Google</string>
+    <string name="Vk">VK</string>
+    <string name="Email">Email</string>
+    <string name="Password">Пароль</string>
+    <string name="Forgot">Забыли пароль?</string>
+    <string name="Or">или войдите с помощью</string>
+    <string name="EnterText">Вход</string>
+    <string name="name_email_com">name@email.com</string>
+    <string name="password">password</string>
+    <string name="todo">TODO</string>
+</resources>
