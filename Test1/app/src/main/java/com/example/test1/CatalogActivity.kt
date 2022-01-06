@@ -1,7 +1,9 @@
 package com.example.test1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.test1.databinding.ActivityCatalogBinding
 import kotlinx.android.synthetic.main.recycle_test.*
@@ -31,5 +33,10 @@ class CatalogActivity : AppCompatActivity() {
                 index++
             }
         }
+    }
+
+    fun onClickGoFavorite(view: View) {
+        val intent = Intent(this, FavoriteActivity::class.java)
+        startActivity(intent)
     }
 }
