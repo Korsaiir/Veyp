@@ -20,12 +20,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FavoriteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CatalogActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false">
 

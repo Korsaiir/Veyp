@@ -1,18 +1,24 @@
 package com.example.test1
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.example.test1.EntranceFragment
+import com.example.test1.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
+        navigateToFragment(EntranceFragment.newInstance())
     }
-
-    fun onClickGoCatalog(view: View) {
-        val intent = Intent(this, CatalogActivity::class.java)
-        startActivity(intent)
+    fun navigateToFragment(fmt: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.place_holder,fmt)
+            .addToBackStack(fmt.javaClass.name)
+            .commit()
     }
+    
 }
