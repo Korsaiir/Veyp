@@ -1,4 +1,4 @@
-package com.example.test1.network
+package com.example.test1.domain.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi

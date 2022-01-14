@@ -1,10 +1,11 @@
-package com.example.test1
+package com.example.test1.presentation.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.example.test1.EntranceFragment
+import com.example.test1.R
+import com.example.test1.presentation.fragments.EntranceFragment
 import com.example.test1.databinding.ActivityMainBinding
 
 class MainActivity : FragmentActivity() {

@@ -1,4 +1,4 @@
-package com.example.test1
+package com.example.test1.presentation
 
 import android.view.View
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout

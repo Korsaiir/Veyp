@@ -1,4 +1,4 @@
-package com.example.test1
+package com.example.test1.presentation.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,21 +6,19 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.test1.R
+import com.example.test1.presentation.ScreenState
+import com.example.test1.presentation.adapter.ProductAdapter
 import com.example.test1.databinding.FragmentCatalogBinding
-import com.example.test1.network.NetworkService
+import com.example.test1.data.model.Product
+import com.example.test1.presentation.viewmodel.CatalogViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 import kotlinx.serialization.ExperimentalSerializationApi
 
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
-
+    private val viewModel by lazy { CatalogViewModel(requireContext(), lifecycleScope) }
     private lateinit var binding: FragmentCatalogBinding
 
     companion object {
@@ -33,39 +31,29 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCatalogBinding.bind(view)
 
-        merge(
-            flowOf(Unit),
-            binding.swipeRefreshLayout.onRefreshFlow(),
-            binding.buttonRefresh.onClickFlow()
-        ).flatMapLatest { loadItems() }
-            .distinctUntilChanged()
-            .onEach {
-                when (it) {
-                    is ScreenState.DataLoaded -> {
-                        setLoading(false)
-                        setError(null)
-                        setData(it.products)
-                    }
-                    is ScreenState.Error -> {
-                        setLoading(false)
-                        setError(it.error)
-                        setData(null)
-                    }
-                    is ScreenState.Loading -> {
-                        setLoading(true)
-                        setError(null)
-                    }
+        if (savedInstanceState == null) {
+            viewModel.loadData()
+        }
+        binding.swipeRefreshLayout.setOnRefreshListener { viewModel.loadData() }
+        binding.buttonRefresh.setOnClickListener { viewModel.loadData() }
+        viewModel.screenState.onEach {
+            when (it) {
+                is ScreenState.DataLoaded -> {
+                    setLoading(false)
+                    setError(null)
+                    setData(it.products)
                 }
-            }.launchIn(lifecycleScope)
-    }
-
-    @ExperimentalSerializationApi
-    private fun loadItems() = flow {
-        emit(ScreenState.Loading)
-        val items = NetworkService.loadItems()
-        emit(ScreenState.DataLoaded(items))
-    }.catch {
-        emit(ScreenState.Error(getString(R.string.error)))
+                is ScreenState.Error -> {
+                    setLoading(false)
+                    setError(it.error)
+                    setData(null)
+                }
+                is ScreenState.Loading -> {
+                    setLoading(true)
+                    setError(null)
+                }
+            }
+        }.launchIn(lifecycleScope)
     }
 
     private fun setLoading(isLoading: Boolean) = with(binding) {

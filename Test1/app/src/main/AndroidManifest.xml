@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test1">
         <activity
-            android:name=".SplashLoad"
+            android:name=".presentation.activity.SplashLoad"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.activity.MainActivity"
             android:exported="false">
 
         </activity>

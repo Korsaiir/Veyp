@@ -1,12 +1,13 @@
-package com.example.test1
+package com.example.test1.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.bumptech.glide.Glide
+import com.example.test1.R
 import com.example.test1.databinding.ProductItemBinding
+import com.example.test1.data.model.Product
 
 class ProductAdapter(
     private val productList: List<Product>,

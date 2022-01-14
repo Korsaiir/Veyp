@@ -1,9 +1,9 @@
-package com.example.test1
+package com.example.test1.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.test1.MainActivity
+import com.example.test1.presentation.activity.MainActivity
 import com.example.test1.R
 import com.example.test1.databinding.FragmentEntranceBinding
 
