@@ -23,11 +23,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         binding.apply {
             progressBar.visibility = View.GONE
             rcView.layoutManager = GridLayoutManager(context, 2)
-            rcView.adapter =
-                adapter
-            items = emptyList()
-            adapter.clear()
-            adapter.notifyDataSetChanged()
+            rcView.adapter = ProductAdapter(listOf())
             swipeRefreshLayout.isRefreshing = false
         }
         Snackbar.make(
@@ -40,7 +36,6 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         CoroutineScope(Dispatchers.Main + SupervisorJob() + coroutineExceptionHandler)
 
     private lateinit var binding: FragmentCatalogBinding
-    private val adapter = ProductAdapter()
 
     companion object {
         fun newInstance() = CatalogFragment()
@@ -71,9 +66,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             items = NetworkService.loadItems()
             binding.apply {
                 rcView.layoutManager = GridLayoutManager(context, 2)
-                rcView.adapter = adapter
-                for (i in items.indices)
-                        adapter.addProduct(items[i])
+                rcView.adapter = ProductAdapter(items)
                 progressBar.visibility = View.GONE
                 swipeRefreshLayout.isRefreshing = false
             }

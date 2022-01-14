@@ -11,7 +11,6 @@ import com.example.test1.databinding.FragmentEntranceBinding
 
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     private lateinit var binding: FragmentFavoriteBinding
-    private val adapter = ProductAdapter()
     private val imageIdList = listOf(R.drawable.salt_pink, R.drawable.salt_king)
     private var index = 0
 

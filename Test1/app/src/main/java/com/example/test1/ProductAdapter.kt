@@ -8,8 +8,9 @@ import coil.load
 import com.bumptech.glide.Glide
 import com.example.test1.databinding.ProductItemBinding
 
-class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
-    val productList = ArrayList<Product>()
+class ProductAdapter(
+    private val productList: List<Product>,
+) : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
     class ProductHolder(item: View) : RecyclerView.ViewHolder(item) {
         val binding = ProductItemBinding.bind(item)
@@ -36,15 +37,4 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     override fun getItemCount(): Int {
         return productList.size
     }
-
-    fun addProduct(product: Product){
-        productList.add(product)
-        notifyDataSetChanged()
-    }
-
-    fun clear(){
-        productList.clear()
-        notifyDataSetChanged()
-    }
-
 }
