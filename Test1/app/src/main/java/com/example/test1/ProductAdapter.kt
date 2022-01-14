@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.bumptech.glide.Glide
 import com.example.test1.databinding.ProductItemBinding
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
@@ -12,7 +14,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     class ProductHolder(item: View) : RecyclerView.ViewHolder(item) {
         val binding = ProductItemBinding.bind(item)
         fun bind(product: Product) = with(binding) {
-            productImage.setImageResource(product.imageId)
+            Glide.with(itemView.context)
+                .load(product.image)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(productImage)
             productPrice.text = product.price
             productDescription.text = product.description
         }
@@ -33,6 +39,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
     fun addProduct(product: Product){
         productList.add(product)
+        notifyDataSetChanged()
+    }
+
+    fun clear(){
+        productList.clear()
         notifyDataSetChanged()
     }
 

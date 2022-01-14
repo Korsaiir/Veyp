@@ -1,0 +1,70 @@
+[
+  {
+    "item_id": 1,
+    "name": "Maxwell's Pink",
+    "description": "Maxwells Pink hybrid nicotine 20mg",
+    "price": "550 rub",
+    "category": "liquid",
+    "image": "https://megabuzz.ru/wp-content/uploads/2018/07/31-9.jpg",
+    "reviews": [
+      {
+        "review_id": 1,
+        "item_id": 1,
+        "user_id": 1,
+        "text": "Максвелс, как всегда на высоте!",
+        "date": "2022-01-05T10:26:16+00:00"
+      },
+      {
+        "review_id": 2,
+        "item_id": 1,
+        "user_id": 2,
+        "text": "Кайфарики",
+        "date": "2022-01-07T14:12:18+00:00"
+      }
+    ]
+  },
+  {
+    "item_id": 2,
+    "name": "The Cannibal's King",
+    "description": "The Cannibal's King salt nicotine 20mg",
+    "price": "500 rub",
+    "category": "liquid",
+    "image": "https://сигарета.рф/published/publicdata/SIGARETA/attachments/SC/products_pictures/2a786d9e6b7e6e362fbadea485716b1c_enl.jpg",
+    "reviews": [
+      {
+        "review_id": 3,
+        "item_id": 2,
+        "user_id": 1,
+        "text": "Класс!",
+        "date": "2022-01-03T13:15:16+00:00"
+      }
+    ]
+  },
+  {
+    "item_id": 3,
+    "name": "Bad drip bad blood",
+    "description": "Bad drip bad blood",
+    "price": "1300 rub",
+    "category": "liquid",
+    "image": "https://cdn.shopify.com/s/files/1/1344/9499/products/bad-drip-labs-bad-blood-ejuice-416359.png?v=1622579428",
+    "reviews": []
+  },
+  {
+    "item_id": 4,
+    "name": "The Scandalist hardhitters",
+    "description": "The scandalist hardhitters salt nicotine 20mg",
+    "price": "500 rub",
+    "category": "liquid",
+    "image": "https://smoke-off.su/image/catalog/product/zhidkosti/the-scandalist/zhidkost-the-scandalist-hardhitters-rise-and-shine-30ml.jpg",
+    "reviews": []
+  },
+  {
+    "item_id": 5,
+    "name": "The Scandalist doomsday machine",
+    "description": "The Scandalist doomsday machine",
+    "price": "600 rub",
+    "category": "liquid",
+    "image": "https://fanfan.md/wp-content/uploads/doomsday-machine.jpg",
+    "reviews": []
+  }
+]

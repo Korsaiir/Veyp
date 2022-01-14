@@ -1,0 +1,26 @@
+[
+  {
+    "user_id": 1,
+    "fullname": "Макаков Михаил",
+    "password": "diebel111",
+    "phone": "+79648502588",
+    "email": "diebel@mail.ru",
+    "address": "Saransk"
+  },
+  {
+    "user_id": 2,
+    "fullname": "Яйкин Илья",
+    "password": "singleton",
+    "phone": "+79271801010",
+    "email": "balls@mail.ru",
+    "address": "Saransk"
+  },
+  {
+    "user_id": 3,
+    "fullname": "Двемаскин Кирилл",
+    "password": "refraction",
+    "phone": "+79969609417",
+    "email": "killreal@mail.ru",
+    "address": "Saransk"
+  }
+]

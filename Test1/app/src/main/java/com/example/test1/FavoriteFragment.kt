@@ -22,10 +22,10 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFavoriteBinding.bind(view)
-        init()
+       // init()
     }
 
-    private fun init() {
+    /*private fun init() {
         binding.apply {
             rcView.layoutManager = GridLayoutManager(context, 2)
             rcView.adapter = adapter
@@ -36,5 +36,5 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
                 index++
             }
         }
-    }
+    }*/
 }
