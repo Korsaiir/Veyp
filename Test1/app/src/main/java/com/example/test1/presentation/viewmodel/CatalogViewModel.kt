@@ -2,6 +2,7 @@ package com.example.test1.presentation.viewmodel
 
 import android.content.Context
 import com.example.test1.R
+import com.example.test1.data.database.DatabaseProvider
 import com.example.test1.domain.network.NetworkService
 import com.example.test1.presentation.ScreenState
 import kotlinx.coroutines.CoroutineScope
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
+import java.io.IOException
 
 class CatalogViewModel(
     private val context: Context,
@@ -17,6 +19,7 @@ class CatalogViewModel(
 ) {
     private val _screenState = MutableStateFlow<ScreenState>(ScreenState.Loading)
     val screenState: StateFlow<ScreenState> = _screenState
+    private val vapeDao = DatabaseProvider.provideDatabase(context).productsDao()
 
     private var job: Job? = null
 
@@ -25,11 +28,17 @@ class CatalogViewModel(
         job?.cancel()
         job = coroutineScope.launch {
             try {
-                _screenState.emit(ScreenState.Loading)
-                val items = NetworkService.loadItems()
-                _screenState.emit(ScreenState.DataLoaded(items))
-            } catch (ex: Throwable) {
-                _screenState.emit(ScreenState.Error(context.resources.getString(R.string.error)))
+                _screenState.value = ScreenState.Loading
+                val vape = try {
+                    NetworkService(context).loadItems().also {
+                        vapeDao.insertAll(it)
+                    }
+                } catch (ex: IOException){
+                    vapeDao.getAll()
+                }
+                _screenState.value = ScreenState.DataLoaded(vape)
+            } catch(ex: Throwable) {
+                _screenState.value = ScreenState.Error(context.getString(R.string.error))
             }
         }
     }
